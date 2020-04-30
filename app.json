@@ -1,0 +1,17 @@
+{
+  "name": "LiIO",
+  "displayName": "LiIO",
+  "expo": {
+    "name": "LiIO",
+    "slug": "LiIO",
+    "version": "1.0.0",
+    "platforms": [
+      "ios",
+      "android",
+      "web"
+    ],
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}
