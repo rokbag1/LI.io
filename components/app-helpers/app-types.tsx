@@ -5,8 +5,9 @@ import { RouteProp } from '@react-navigation/native';
 export type StackParamList = {
     LoadingPage: undefined;
     MainPage: undefined;
+    AddCategory: undefined;
+
   };
-  
 
 export type MainPage = StackNavigationProp<
   StackParamList,
@@ -18,6 +19,12 @@ export type LoadingPage = StackNavigationProp<
   'LoadingPage'
 >;
 
+export type AddCategory = StackNavigationProp<
+  StackParamList,
+  'AddCategory'
+>;
+
+type AddCategoryRouse = RouteProp<StackParamList, 'AddCategory'>;
 type LoadingPageRoute = RouteProp<StackParamList, 'LoadingPage'>;
 type MainPageRoute = RouteProp<StackParamList, 'MainPage'>;
 
@@ -30,6 +37,11 @@ export type MainPageProp = {
 export type LoadingPageProp = {
   navigation: LoadingPage;
   route: LoadingPageRoute;
+};
+
+export type AddCategoryProp = {
+  navigation: AddCategory;
+  route: AddCategoryRouse;
 };
 
 

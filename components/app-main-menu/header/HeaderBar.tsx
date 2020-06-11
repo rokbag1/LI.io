@@ -21,7 +21,7 @@ const styles = StyleSheet.create({
     borderBottomColor: '#10B896',
     borderBottomWidth: 2,
     height: 65,
-    top: 0,
+    top: 30,
     alignItems: "center",
     justifyContent: "center",
   },

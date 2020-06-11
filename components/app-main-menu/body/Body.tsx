@@ -1,12 +1,18 @@
 import React, { Component } from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, View, Button } from "react-native";
 import PlusWithoutElements from "./PlusWithoutElements";
+import { StackNavigationProp } from "@react-navigation/stack";
+import { StackParamList } from "../../app-helpers/app-types";
 
-class Body extends React.Component {
+export interface BodyProps {
+  navigation : StackNavigationProp<StackParamList, "MainPage">
+}
+
+class Body extends Component<BodyProps>  {
   render() {
     return (
       <View style={styles.container}>
-        <PlusWithoutElements/>
+        <PlusWithoutElements {...this.props}/>
       </View>
     );
   }

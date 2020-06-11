@@ -7,6 +7,7 @@ import { useFonts } from "@use-expo/font";
 import { createStackNavigator } from "@react-navigation/stack";
 import { NavigationContainer } from "@react-navigation/native";
 import { StackParamList } from "./components/app-helpers/app-types"
+import AddCategory from "./components/app-main-menu/forms/AddCategory";
 
 const Stack = createStackNavigator<StackParamList>();
 export default function App() {
@@ -23,6 +24,7 @@ export default function App() {
           <Stack.Navigator>
             <Stack.Screen name="LoadingPage" component={LoadingPage} options={{headerShown:false,}} />
             <Stack.Screen name="MainPage" component={MainPage}  options={{headerShown:false,}} />
+            <Stack.Screen name="AddCategory" component={AddCategory}  options={{headerShown:true,}} />
           </Stack.Navigator>
         </NavigationContainer>
   

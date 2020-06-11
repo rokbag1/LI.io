@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, View, Button } from "react-native";
 import { MainPageProp } from "../app-helpers/app-types";
 import { StackActions, NavigationActions } from "react-navigation";
 import { LinearGradient } from "expo-linear-gradient";
@@ -23,7 +23,7 @@ class MainMenu extends React.Component<MainPageProp> {
         }}
       >
         <HeaderBar />
-        <Body />
+        <Body navigation={this.props.navigation} />
       </LinearGradient>
     );
   }
