@@ -8,6 +8,7 @@
     "test": "jest"
   },
   "dependencies": {
+    "@expo/vector-icons": "^10.2.0",
     "@fortawesome/fontawesome-svg-core": "^1.2.28",
     "@fortawesome/free-brands-svg-icons": "^5.13.0",
     "@fortawesome/free-regular-svg-icons": "^5.13.0",
@@ -19,12 +20,16 @@
     "@react-navigation/stack": "^5.2.11",
     "@use-expo/font": "^2.0.0",
     "expo": "^37.0.0",
+    "expo-file-system": "^8.1.0",
     "expo-font": "~8.1.0",
     "expo-linear-gradient": "~8.1.0",
+    "expo-sqlite": "^8.1.0",
     "expo-updates": "~0.1.2",
+    "native-base": "2.13.8",
     "react": "16.9.0",
     "react-dom": "16.9.0",
     "react-native": "0.61.4",
+    "react-native-elements": "^2.0.2",
     "react-native-gesture-handler": "^1.6.1",
     "react-native-linear-gradient": "^2.5.6",
     "react-native-reanimated": "^1.7.1",
@@ -35,6 +40,7 @@
     "react-native-unimodules": "~0.8.1",
     "react-native-vector-icons": "^6.6.0",
     "react-native-web": "^0.11.7",
+    "react-native-windows": "^0.61.9",
     "react-navigation": "^4.3.7"
   },
   "devDependencies": {

@@ -1,33 +1,22 @@
 import { StackNavigationProp } from "@react-navigation/stack";
-import { RouteProp } from '@react-navigation/native';
-
+import { RouteProp } from "@react-navigation/native";
+import { Rows } from "./database-control";
 
 export type StackParamList = {
-    LoadingPage: undefined;
-    MainPage: undefined;
-    AddCategory: undefined;
+  LoadingPage: undefined;
+  MainPage: undefined;
+  AddCategory: undefined;
+};
 
-  };
+export type MainPage = StackNavigationProp<StackParamList, "MainPage">;
 
-export type MainPage = StackNavigationProp<
-  StackParamList,
-  'MainPage'
->;
+export type LoadingPage = StackNavigationProp<StackParamList, "LoadingPage">;
 
-export type LoadingPage = StackNavigationProp<
-  StackParamList,
-  'LoadingPage'
->;
+export type AddCategory = StackNavigationProp<StackParamList, "AddCategory">;
 
-export type AddCategory = StackNavigationProp<
-  StackParamList,
-  'AddCategory'
->;
-
-type AddCategoryRouse = RouteProp<StackParamList, 'AddCategory'>;
-type LoadingPageRoute = RouteProp<StackParamList, 'LoadingPage'>;
-type MainPageRoute = RouteProp<StackParamList, 'MainPage'>;
-
+type AddCategoryRouse = RouteProp<StackParamList, "AddCategory">;
+type LoadingPageRoute = RouteProp<StackParamList, "LoadingPage">;
+type MainPageRoute = RouteProp<StackParamList, "MainPage">;
 
 export type MainPageProp = {
   navigation: MainPage;
@@ -44,4 +33,13 @@ export type AddCategoryProp = {
   route: AddCategoryRouse;
 };
 
+export interface State {
+  id: String;
+  name: String;
+}
 
+export interface MainBodyState {
+  id?: String;
+  data?: String;
+  rows?: Rows;
+}

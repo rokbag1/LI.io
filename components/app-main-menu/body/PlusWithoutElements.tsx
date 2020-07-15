@@ -1,22 +1,19 @@
 import React, { Component } from "react";
 import { StyleSheet, Text, View, Button } from "react-native";
-import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
-import { faPlus, faPlusSquare } from "@fortawesome/free-solid-svg-icons";
-import { MainPageProp } from "../../app-helpers/app-types";
-import { StackActions, NavigationActions } from "react-navigation";
-import Icon from "react-native-vector-icons/FontAwesome";
+import Icon from "react-native-vector-icons/FontAwesome5";
 import { BodyProps } from "./Body";
 
 class PlusWithoutElements extends React.Component<BodyProps> {
   render() {
     return (
       <View style={styles.container}>
-        <Icon.Button
-          name="overloaded-cristals"
+        <Icon
+          size={84}
+          style={styles.plus}
+          name="plus-square"
           onPress={() => this.props.navigation.navigate("AddCategory")}
         >
-          <FontAwesomeIcon style={styles.plus} size={84} icon={faPlusSquare} />
-        </Icon.Button>
+        </Icon>
       </View>
     );
   }
