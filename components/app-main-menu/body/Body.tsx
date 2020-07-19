@@ -23,9 +23,9 @@ class Body extends Component<BodyProps> {
 
   render() {
     var item_list = <PlusWithoutElements {...this.props} />;
-    if (this.state.rows?.length && this.state.rows?.length > 0) {
-      item_list = <CategoryList {...this.state.rows} />;
-    }
+    // if (this.state.rows?.length && this.state.rows?.length > 0) {
+    //   item_list = <CategoryList {...this.state.rows} />;
+    // }
 
     return <View style={styles.container}>{item_list}</View>;
   }

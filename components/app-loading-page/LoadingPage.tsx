@@ -15,19 +15,7 @@ class LoadingPage extends React.Component<LoadingPageProp> {
   render() {
     changePageAfterDelay(this.props);
     return (
-      <LinearGradient
-        colors={[
-          "rgba(25,1,83,1) 0%",
-          "rgba(95,51,113,1) 32.21%",
-          "rgba(159,21,226,1) 49.78%",
-          "rgba(108,53,142,1) 69.46%",
-          "rgba(25,1,83,1) 100%",
-        ]}
-        style={{
-          flex: 1,
-          alignSelf: "stretch",
-        }}
-      >
+
         <View style={styles.container}>
           <Circle />
           <Button
@@ -35,7 +23,6 @@ class LoadingPage extends React.Component<LoadingPageProp> {
             onPress={() => this.props.navigation.navigate("MainPage")}
           />
         </View>
-      </LinearGradient>
     );
   }
 }

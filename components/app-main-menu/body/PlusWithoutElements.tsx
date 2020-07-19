@@ -6,10 +6,10 @@ import { BodyProps } from "./Body";
 class PlusWithoutElements extends React.Component<BodyProps> {
   render() {
     return (
-      <View style={styles.container}>
+      <View style={plusIconStyles.container}>
         <Icon
           size={84}
-          style={styles.plus}
+          style={plusIconStyles.plus}
           name="plus-square"
           onPress={() => this.props.navigation.navigate("AddCategory")}
         >
@@ -21,7 +21,7 @@ class PlusWithoutElements extends React.Component<BodyProps> {
 
 export default PlusWithoutElements;
 
-const styles = StyleSheet.create({
+export const plusIconStyles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: "center",
