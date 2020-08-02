@@ -22,12 +22,17 @@ class Body extends Component<BodyProps> {
   }
 
   render() {
-    var item_list = <PlusWithoutElements {...this.props} />;
-    // if (this.state.rows?.length && this.state.rows?.length > 0) {
-    //   item_list = <CategoryList {...this.state.rows} />;
-    // }
+    var item_list;
+    if (this.state.rows?.length && this.state.rows?.length > 0) {
+      item_list = <CategoryList {...this.state.rows} />;
+    }
 
-    return <View style={styles.container}>{item_list}</View>;
+    return (
+      <View style={styles.container}>
+        { item_list }
+        <PlusWithoutElements {...this.props} />
+      </View>
+    );
   }
 }
 
@@ -35,8 +40,6 @@ export default Body;
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    top: 30,
+    flex:1
   },
-
 });

@@ -1,38 +1,41 @@
-import React from "react";
+import React, { useState, useContext } from "react";
 import { View, Text, StyleSheet } from "react-native";
 import ModalDropdown from "react-native-modal-dropdown";
 import Icon from "react-native-vector-icons/FontAwesome5";
 import { TouchableHighlight } from "react-native-gesture-handler";
 
-import { plusIconStyles } from "../body/PlusWithoutElements";
-
 interface DemoOptionType {
   name: string;
-  age: number;
+  img: string;
 }
-const DEMO_OPTIONS_2: Array<DemoOptionType> = [
-  { name: "Rex", age: 30 },
-  { name: "Mary", age: 25 },
-  { name: "John", age: 41 },
-  { name: "Jim", age: 22 },
-  { name: "Susan", age: 52 },
-  { name: "Brent", age: 33 },
-  { name: "Alex", age: 16 },
-  { name: "Ian", age: 20 },
-  { name: "Phil", age: 24 },
+
+const IMAGE_OPTIONS: Array<DemoOptionType> = [
+  { name: "Lights for home", img: "home" },
+  { name: "Lights for car", img: "car-side" },
+  { name: "Lights for party", img: "glass-cheers" },
+  { name: "Lights for bar", img: "beer" },
+  { name: "Lights for any reason", img: "random" },
 ];
 
-class IconDropdown extends React.Component {
+interface Props {
+  setIconImg: (img: string) => void;
+}
+
+class IconDropdown extends React.Component<Props> {
   render() {
     return (
       <View>
         <ModalDropdown<DemoOptionType>
-          style={styles.dropdown_2}
-          textStyle={styles.dropdown_2_text}
-          dropdownStyle={styles.dropdown_2_dropdown}
-          options={DEMO_OPTIONS_2}
+          style={styles.dropdown_button}
+          textStyle={styles.dropdown_text}
+          dropdownStyle={styles.dropdown_dropdown}
+          options={IMAGE_OPTIONS}
+          defaultValue="Select image"
           renderButtonText={(rowData) =>
-            renderButtonText((rowData as unknown) as DemoOptionType)
+            renderButtonText(
+              (rowData as unknown) as DemoOptionType,
+              this.props
+            )
           }
           renderRow={(option, rowId, isHighlighted) =>
             renderRow(option, rowId, isHighlighted)
@@ -46,23 +49,26 @@ class IconDropdown extends React.Component {
   }
 }
 
-function renderButtonText(rowData: DemoOptionType) {
-  const { name, age } = rowData;
-  return `${name} - ${age}`;
+function renderButtonText(rowData: DemoOptionType, props: Props ) {
+  const { name, img } = rowData;
+  props.setIconImg( img );
+  return `${name}`;
 }
 
 function renderSeparator(rowID: string) {
   let key = `spr_${rowID}`;
 
-  return <View style={styles.dropdown_2_separator} key={key} />;
+  return <View style={styles.dropdown_separator} key={key} />;
 }
 
 function renderRow(rowData: DemoOptionType, rowID: string, highlighted: any) {
   return (
     <TouchableHighlight underlayColor="cornflowerblue">
-      <View>
-        <Icon size={16} style={plusIconStyles.plus} name="plus-square"></Icon>
-        <Text> {`${rowData.name} (${rowData.age})`} </Text>
+      <View style={styles.dropdown_row}>
+        <Icon style={styles.dropdown_image} size={32} name={rowData.img}></Icon>
+        <View style={styles.text_container}>
+          <Text style={styles.text}> {`${rowData.name}`} </Text>
+        </View>
       </View>
     </TouchableHighlight>
   );
@@ -71,45 +77,13 @@ function renderRow(rowData: DemoOptionType, rowID: string, highlighted: any) {
 export default IconDropdown;
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-  row: {
-    flex: 1,
-    flexDirection: "row",
-  },
-  cell: {
-    flex: 1,
-  },
-  scrollView: {
-    flex: 1,
-  },
-  contentContainer: {
-    height: 500,
-    paddingVertical: 100,
-    paddingLeft: 20,
-  },
-  textButton: {
-    color: "deepskyblue",
-    borderColor: "deepskyblue",
-    margin: 2,
-  },
-
-  dropdown_1: {
-    flex: 1,
-    top: 32,
-    left: 8,
-  },
-  dropdown_2: {
-    alignSelf: "flex-end",
-    width: 150,
-    marginTop: 32,
-    right: 8,
+  dropdown_button: {
+    width: 320,
     borderWidth: 0,
     borderRadius: 3,
     backgroundColor: "cornflowerblue",
   },
-  dropdown_2_text: {
+  dropdown_text: {
     marginVertical: 10,
     marginHorizontal: 6,
     fontSize: 18,
@@ -117,68 +91,53 @@ const styles = StyleSheet.create({
     textAlign: "center",
     textAlignVertical: "center",
   },
-  dropdown_2_dropdown: {
-    width: 150,
-    height: 300,
-    borderColor: "cornflowerblue",
+  dropdown_dropdown: {
+    marginTop: -20,
+    width: 320,
+    height: 120,
+    borderColor: "#525252",
     borderWidth: 2,
     borderRadius: 3,
   },
-  dropdown_2_row: {
+  dropdown_row: {
+    backgroundColor: "white",
     flexDirection: "row",
     height: 40,
+    display: "flex",
     alignItems: "center",
   },
-  dropdown_2_image: {
-    marginLeft: 4,
-    width: 30,
-    height: 30,
+  dropdown_image: {
+    width: 60,
+    display: "flex",
+    alignSelf: "center",
+    textAlign: "center",
+    color: "#525252",
   },
-  dropdown_2_row_text: {
+  dropdown_row_text: {
     marginHorizontal: 4,
     fontSize: 16,
     color: "navy",
     textAlignVertical: "center",
   },
-  dropdown_2_separator: {
+  dropdown_separator: {
     height: 1,
-    backgroundColor: "cornflowerblue",
+    backgroundColor: "#525252",
   },
-  dropdown_3: {
-    width: 150,
-    borderColor: "lightgray",
-    borderWidth: 1,
-    borderRadius: 1,
-  },
-  dropdown_3_dropdownTextStyle: {
-    backgroundColor: "#000",
-    color: "#fff",
-  },
-  dropdown_3_dropdownTextHighlightStyle: {
-    backgroundColor: "#fff",
-    color: "#000",
-  },
-  dropdown_4: {
-    margin: 8,
-    borderColor: "lightgray",
-    borderWidth: 1,
-    borderRadius: 1,
-  },
-  dropdown_4_dropdown: {
-    width: 100,
-  },
-  dropdown_5: {
-    margin: 8,
-    borderColor: "lightgray",
-    borderWidth: 1,
-    borderRadius: 1,
-  },
-  dropdown_6: {
-    flex: 1,
-    left: 8,
-  },
-  dropdown_6_image: {
-    width: 40,
+
+  text_container: {
     height: 40,
+    borderLeftColor: "#C0C0C0",
+    borderLeftWidth: 1,
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "center",
+    alignSelf: "center",
+    textAlign: "center",
+    alignItems: "center",
+  },
+
+  text: {
+    width: 200,
+    marginLeft: 10,
   },
 });

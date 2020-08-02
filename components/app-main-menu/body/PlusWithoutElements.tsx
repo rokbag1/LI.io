@@ -25,7 +25,8 @@ export const plusIconStyles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: "center",
-    justifyContent: "center",
+    justifyContent: 'flex-end',
+    marginBottom: 10
   },
   plus: {
     zIndex: 1,

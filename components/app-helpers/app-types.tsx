@@ -1,6 +1,6 @@
 import { StackNavigationProp } from "@react-navigation/stack";
+import { createContext } from "react";
 import { RouteProp } from "@react-navigation/native";
-import { Rows } from "./database-control";
 
 export type StackParamList = {
   LoadingPage: undefined;
@@ -33,13 +33,19 @@ export type AddCategoryProp = {
   route: AddCategoryRouse;
 };
 
-export interface State {
-  id: String;
-  name: String;
+export interface CategoryState {
+  category_id?: String;
+  category_name?: String;
+  category_img?: String;
 }
 
 export interface MainBodyState {
   id?: String;
   data?: String;
   rows?: Rows;
+}
+
+export interface Rows {
+  _array: Array<CategoryState>;
+  length: number;
 }
