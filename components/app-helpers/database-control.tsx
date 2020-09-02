@@ -27,7 +27,7 @@ class Database {
 
     db.transaction((tx) => {
       tx.executeSql(
-        "CREATE TABLE IF NOT EXISTS lio_category(id INTEGER PRIMARY KEY AUTOINCREMENT, category_id VARCHAR(255), category_name VARCHAR(255), category_img VARCHAR(255))",
+        "CREATE TABLE IF NOT EXISTS lio_category(id INTEGER PRIMARY KEY AUTOINCREMENT, category_id VARCHAR(255), category_name VARCHAR(255), category_img VARCHAR(255), category_checked BOOLEAN )",
         [],
         (tx, results) => {
           // console.log(results);
@@ -43,10 +43,10 @@ class Database {
     db.transaction((tx) => {
       // console.log( state);
       tx.executeSql(
-        "INSERT INTO lio_category ( category_id, category_name, category_img) VALUES (?,?,?)",
-        [state.category_id, state.category_name, state.category_img],
+        "INSERT INTO lio_category ( category_id, category_name, category_img, category_checked ) VALUES (?,?,?,?)",
+        [state.category_id, state.category_name, state.category_img, false],
         (tx, results) => {
-          // console.log(results);
+          props.navigation.navigate("MainPage");
         },
         (error) => {
           console.log("Insert", error);
@@ -55,11 +55,19 @@ class Database {
         }
       );
     });
-
-    props.navigation.navigate("MainPage");
   }
 
   public static selectCategories(setState: (rows: Rows) => void): void {
+    db.transaction((tx) => {
+      tx.executeSql("SELECT * from lio_category", [], (_, { rows }) => {
+        const result = (rows as unknown) as Rows;
+        console.log( result )
+        setState(result);
+      });
+    });
+  }
+
+  public static changeCheckValue(setState: (rows: Rows) => void): void {
     db.transaction((tx) => {
       tx.executeSql("SELECT * from lio_category", [], (_, { rows }) => {
         const result = (rows as unknown) as Rows;

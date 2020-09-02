@@ -34,14 +34,15 @@ export type AddCategoryProp = {
 };
 
 export interface CategoryState {
-  category_id?: String;
-  category_name?: String;
-  category_img?: String;
+  category_id: string;
+  category_name?: string;
+  category_img?: string;
+  category_checked?: boolean;
 }
 
 export interface MainBodyState {
-  id?: String;
-  data?: String;
+  id?: string;
+  data?: string;
   rows?: Rows;
 }
 
