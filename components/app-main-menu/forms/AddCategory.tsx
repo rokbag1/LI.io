@@ -3,12 +3,11 @@ import { StyleSheet, Text, View } from "react-native";
 import { Input, Header, Button } from "react-native-elements";
 import Database from "../../app-helpers/database-control";
 import { CategoryState, AddCategoryProp } from "../../app-helpers/app-types";
-import ModalDropdown from "react-native-modal-dropdown";
 import * as FileSystem from "expo-file-system";
 import IconDropdown from "./IconDropdown";
 
 class AddCategory extends React.Component {
-  public state: CategoryState = { id: "", name: "", img: "" };
+  public state: CategoryState = { category_id: "", category_name: "", category_img: "" };
 
   render() {
     return (
@@ -16,15 +15,15 @@ class AddCategory extends React.Component {
         <Input
           placeholder="Parent's device ID"
           label="Device ID"
-          onChangeText={(idValue) => this.setState({ id: idValue })}
+          onChangeText={(idValue) => this.setState({ category_id: idValue })}
         />
         <Input
           placeholder="Name"
           label="Name"
-          onChangeText={(nameValue) => this.setState({ name: nameValue })}
+          onChangeText={(nameValue) => this.setState({ category_name: nameValue })}
         />
         <IconDropdown
-          setIconImg={(img: String) => this.setState({ img: img })}
+          setIconImg={(img: String) => this.setState({ category_img: img })}
         />
         <View style ={styles.button_container}>
         <Button
