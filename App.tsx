@@ -8,6 +8,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 import { NavigationContainer } from "@react-navigation/native";
 import { StackParamList } from "./components/app-helpers/app-types"
 import AddCategory from "./components/app-main-menu/forms/AddCategory";
+import ModifyCategory from "./components/app-main-menu/forms/ModifyCategory";
 
 const Stack = createStackNavigator<StackParamList>();
 
@@ -25,6 +26,7 @@ export default function App() {
             <Stack.Screen name="LoadingPage" component={LoadingPage} options={{headerShown:false,}} />
             <Stack.Screen name="MainPage" component={MainPage}  options={{headerShown:false,}} />
             <Stack.Screen name="AddCategory" component={AddCategory}  options={{headerShown:true,}} />
+            <Stack.Screen name="ModifyCategory" component={ModifyCategory}  options={{headerShown:true,}} />
           </Stack.Navigator>
         </NavigationContainer>
   

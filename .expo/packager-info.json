@@ -1,10 +1,10 @@
 {
   "expoServerPort": 19000,
   "packagerPort": 19001,
-  "packagerPid": 11516,
+  "packagerPid": 10836,
   "expoServerNgrokUrl": "https://bw-arw.anonymous.li-io.exp.direct",
   "packagerNgrokUrl": "https://packager.bw-arw.anonymous.li-io.exp.direct",
-  "ngrokPid": 30712,
+  "ngrokPid": 19024,
   "webpackServerPort": null,
   "devToolsPort": 19002
 }

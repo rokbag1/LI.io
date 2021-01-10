@@ -3,6 +3,7 @@ import { StyleSheet, Text, View, Button } from "react-native";
 import Icon from "react-native-vector-icons/FontAwesome5";
 import { BodyProps } from "./Body";
 
+
 class PlusWithoutElements extends React.Component<BodyProps> {
   render() {
     return (

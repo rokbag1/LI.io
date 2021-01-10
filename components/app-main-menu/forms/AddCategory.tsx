@@ -7,7 +7,7 @@ import * as FileSystem from "expo-file-system";
 import IconDropdown from "./IconDropdown";
 
 class AddCategory extends React.Component {
-  public state: CategoryState = { category_id: "", category_name: "", category_img: "" };
+  public state: CategoryState = { id: 0, category_id: "", category_name: "", category_img: "" };
 
   render() {
     return (

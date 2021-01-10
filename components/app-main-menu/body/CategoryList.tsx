@@ -2,16 +2,18 @@ import React, { Component } from "react";
 import { StyleSheet, Text, View, Button } from "react-native";
 import Icon from "react-native-vector-icons/FontAwesome5";
 import { ListItem, CheckBox } from "react-native-elements";
-import { Rows } from "../../app-helpers/app-types";
+import { Rows, StackParamList } from "../../app-helpers/app-types";
 import Database from "../../app-helpers/database-control";
+import { StackNavigationProp } from "@react-navigation/stack";
 
 interface CheckSate {
-  index: string;
+  index: number;
   isChecked: boolean;
 }
 
 interface State {
   checkboxes: Array<CheckSate>;
+  navigation: StackNavigationProp<StackParamList, "MainPage">;
 }
 
 class CategoryList extends React.Component<Rows, State> {
@@ -20,20 +22,20 @@ class CategoryList extends React.Component<Rows, State> {
     this.state = {
       checkboxes: this.props._array.map((item) => {
         return {
-          index: item.category_id,
+          index: item.id,
           isChecked: item.category_checked ?? false,
         };
       }),
+      navigation: this.props.navigation,
     };
   }
-
-  // public state: CheckSate = { index: 0, isChecked: false };
 
   render() {
     return (
       <View style={styles.container}>
         {this.props._array.map((category_data, i) => (
           <ListItem
+            onPress={() => this.props.navigation.navigate("ModifyCategory")}
             key={i}
             leftAvatar={
               <Icon
@@ -49,19 +51,18 @@ class CategoryList extends React.Component<Rows, State> {
             rightElement={
               <CheckBox
                 center
-                title="Click Here"
                 checkedIcon="dot-circle-o"
                 uncheckedIcon="circle-o"
                 checked={this.state.checkboxes[i].isChecked ?? false}
                 onPress={() => {
                   const newArray = this.state.checkboxes;
+                  Database.changeCheckValue(newArray[i]);
                   newArray[i].isChecked = !newArray[i].isChecked;
 
                   this.setState({
                     checkboxes: newArray,
                   });
                 }}
-                // onPress={Database.changeCheckValue( this.state )}
               />
             }
             title={

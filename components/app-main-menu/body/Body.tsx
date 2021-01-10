@@ -15,10 +15,10 @@ export interface BodyProps {
   navigation: StackNavigationProp<StackParamList, "MainPage">;
 }
 
-function printItemList(state: MainBodyState) {
+function printItemList(state: MainBodyState, navigation: StackNavigationProp<StackParamList, "MainPage"> ) {
   var item_list;
   if (state.rows?.length && state.rows?.length > 0) {
-    item_list = <CategoryList {...state.rows} />;
+    item_list = <CategoryList {...state.rows} navigation={navigation} />;
   }
 
   return item_list;
@@ -28,7 +28,6 @@ class Body extends Component<BodyProps> {
   public state: MainBodyState = {};
 
   componentDidMount() {
-    // console.log("helloi");
     Database.selectCategories((rows) =>
       this.setState({
         rows: rows,
@@ -45,11 +44,10 @@ class Body extends Component<BodyProps> {
   // }
 
   render() {
-    var item_list = printItemList(this.state);
+    var item_list = printItemList(this.state, this.props.navigation);
 
     return (
       <View style={styles.container}>
-        {/* <NavigationEvents onDidFocus={() => this.fetchData()} /> */}
         {item_list}
         <PlusWithoutElements {...this.props} />
       </View>
